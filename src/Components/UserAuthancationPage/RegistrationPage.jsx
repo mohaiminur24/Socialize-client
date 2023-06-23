@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { HiOutlineMailOpen, HiEye, HiEyeOff } from "react-icons/hi";
-import { BiSolidLockAlt } from "react-icons/bi";
+import { HiOutlineMailOpen, HiEye, HiEyeOff, HiOutlinePhotograph, HiPhone } from "react-icons/hi";
+import { BiSolidLockAlt,BiSolidUserCircle } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 
-const LoginPage = () => {
+const RegistrationPage = () => {
   const [passToggle, setPassToggle] = useState(false);
   const {
     register,
@@ -21,8 +21,28 @@ const LoginPage = () => {
         alt=""
       />
       <div className="p-10">
-        <h1 className="text-3xl font-bold tracking-tight">Welcome</h1>
-        <form className="text-sm mt-10 space-y-5" onSubmit={handleSubmit}>
+        <h1 className="text-3xl font-bold tracking-tight">Create Account</h1>
+        <form className="text-sm mt-10 mb-4 space-y-5" onSubmit={handleSubmit}>
+          <div className="flex gap-4">
+            <div className="border-b py-1 flex justify-start items-center">
+              <BiSolidUserCircle className="text-lg" />
+              <input
+                className="text-gray-500 outline-none w-full px-5"
+                type="text"
+                name="name"
+                placeholder="Name"
+              />
+            </div>
+            <div className="border-b py-1 flex justify-start items-center">
+              <HiOutlinePhotograph className="text-lg" />
+              <input
+                className="text-gray-500 outline-none w-full px-5"
+                type="text"
+                name="photo"
+                placeholder="Photo URL"
+              />
+            </div>
+          </div>
           <div className="border-b py-1 flex justify-start items-center">
             <HiOutlineMailOpen className="text-lg" />
             <input
@@ -30,6 +50,15 @@ const LoginPage = () => {
               type="email"
               name="email"
               placeholder="User Email Address"
+            />
+          </div>
+          <div className="border-b py-1 flex justify-start items-center">
+            <HiPhone className="text-lg" />
+            <input
+              className="text-gray-500 outline-none w-full px-5"
+              type="tel"
+              name="phone"
+              placeholder="Phone Number"
             />
           </div>
           <div className="border-b py-1 flex justify-start items-center">
@@ -53,15 +82,19 @@ const LoginPage = () => {
           <input
             className="text-white outline-none w-full rounded-sm shadow-sm px-5 bg-slate-800 py-2"
             type="submit"
-            value="Login"
+            value="Create Account"
           />
         </form>
-        <button className="text-red-500 text-sm mt-3 font-Raleway block" >Forget Password</button>
-        <span className="text-sm">I don't have an account? <NavLink to='/registration' className='font-semibold text-blue-800'>Create Account</NavLink></span>
-        <SocialLogin/>
+        <span className="text-sm">
+          Already i have an acoount!{" "}
+          <NavLink to="/" className="font-semibold text-blue-800">
+            Login Account
+          </NavLink>
+        </span>
+        <SocialLogin />
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default RegistrationPage;
