@@ -8,7 +8,7 @@ import {
   HiPhone,
 } from "react-icons/hi";
 import { BiSolidLockAlt, BiSolidUserCircle } from "react-icons/bi";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
 import { Authcontext } from "../AuthLayout/AuthLayout";
 import { updateProfile } from "firebase/auth";
@@ -16,7 +16,12 @@ import Swal from "sweetalert2";
 
 const RegistrationPage = () => {
   const [passToggle, setPassToggle] = useState(false);
-  const { handlecreatenewuser, loading, setLoading } = useContext(Authcontext);
+  const { handlecreatenewuser, loading, setLoading, user } = useContext(Authcontext);
+  const navigate = useNavigate();
+
+  if(user){
+    return navigate('/home');
+  };
 
   const {
     register,
