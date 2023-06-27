@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ContanerLayout = ({children}) => {
+const ContainerLayout = ({children}) => {
     return (
         <div className='my-10 w-11/12 mx-auto'>
             {children}
@@ -8,4 +8,4 @@ const ContanerLayout = ({children}) => {
     );
 };
 
-export default ContanerLayout;
+export default ContainerLayout;
