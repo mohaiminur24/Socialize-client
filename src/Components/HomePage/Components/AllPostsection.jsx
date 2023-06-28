@@ -20,12 +20,24 @@ const AllPostsection = () => {
       }
     })
   };
-
+  const handleunlikebutton = (postid)=>{
+    fetch('http://localhost:5000/unlikepostbutton',{
+      method:"DELETE",
+      headers:{
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({email:user.email,postid})
+    }).then(res=> res.json()).then(data=> {
+      if(data.acknowledged){
+        refetch();
+      }
+    });
+  }
   return (
     <div className="bg-base-200 p-10 rounded-md">
       <div>
         {post &&
-          post.map((post, index) =><SingleHomepagePost handlelikebutton={handlelikebutton} key={index} post={post}/>)}
+          post.map((post, index) =><SingleHomepagePost handleunlikebutton={handleunlikebutton} handlelikebutton={handlelikebutton} key={index} post={post}/>)}
       </div>
     </div>
   );

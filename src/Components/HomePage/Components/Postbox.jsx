@@ -3,10 +3,12 @@ import ContainerLayout from "../../ReuseableComponents/ContanerLayout";
 import { useForm } from "react-hook-form";
 import { Authcontext } from "../../AuthLayout/AuthLayout";
 import Swal from "sweetalert2";
+import AllPost from "../../CustomHook/AllPost";
 
 const Postbox = () => {
   const { user } = useContext(Authcontext);
   const { register, handleSubmit, reset } = useForm();
+  const [refetch] = AllPost();
   if (!user) {
     return;
   }
@@ -16,6 +18,7 @@ const Postbox = () => {
       user: user.email,
       username: user.displayName,
       userPhoto: user.photoURL,
+      likes: []
     };
     fetch("http://localhost:5000/postdatainsert", {
       method: "POST",
@@ -34,6 +37,7 @@ const Postbox = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          refetch();
         }
       });
     reset();

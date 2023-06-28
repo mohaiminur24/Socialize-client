@@ -3,7 +3,7 @@ import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import { Authcontext } from "../../AuthLayout/AuthLayout";
 
-const SingleHomepagePost = ({ post,handlelikebutton }) => {
+const SingleHomepagePost = ({ post,handlelikebutton,handleunlikebutton }) => {
   const { user } = useContext(Authcontext);
   const like = (post?.likes)?.find((spost) => spost = user.email);
 
@@ -14,7 +14,7 @@ const SingleHomepagePost = ({ post,handlelikebutton }) => {
         <p>{post.description}</p>
         <div className="flex gap-4 py-2 font-Inter rounded-full border justify-around mt-auto items-center">
           {like ? (
-            <button className="flex items-center justify-center">
+            <button onClick={()=>handleunlikebutton(post._id)} className="flex items-center justify-center">
               <AiFillLike className="text-2xl" />
               {post?.likes && <span className="text-xs">({post?.likes?.length})</span>}
             </button>
