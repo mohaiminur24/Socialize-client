@@ -3,6 +3,7 @@ import LoginPage from "../UserAuthancationPage/LoginPage";
 import RegistrationPage from "../UserAuthancationPage/RegistrationPage";
 import HomePage from "../HomePage/HomePage";
 import MainLayout from "../../../MainLayout";
+import ProtectedRoute from "../ReuseableComponents/ProtectedRoute";
 
 const route = createBrowserRouter([
     {
@@ -15,11 +16,11 @@ const route = createBrowserRouter([
     },
     {
         path:'/home',
-        element: <MainLayout/>,
+        element: <ProtectedRoute><MainLayout/></ProtectedRoute>,
         children:[
             {
                 path:'',
-                element: <HomePage/>
+                element: <ProtectedRoute><HomePage/></ProtectedRoute>
             }
         ]
     }
