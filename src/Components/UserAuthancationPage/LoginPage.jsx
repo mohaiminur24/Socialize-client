@@ -11,6 +11,10 @@ const LoginPage = () => {
   const [passToggle, setPassToggle] = useState(false);
   const {handleloginuser,loading, setLoading, user} = useContext(Authcontext);
   const navigate = useNavigate();
+  
+  if(loading){
+    return;
+  };
 
   if(user){
     return navigate('/home');
