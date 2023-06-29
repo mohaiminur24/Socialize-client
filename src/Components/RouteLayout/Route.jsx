@@ -4,6 +4,7 @@ import RegistrationPage from "../UserAuthancationPage/RegistrationPage";
 import HomePage from "../HomePage/HomePage";
 import MainLayout from "../../../MainLayout";
 import ProtectedRoute from "../ReuseableComponents/ProtectedRoute";
+import MyItemsPage from "../MyitemsPage/MyItemsPage";
 
 const route = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const route = createBrowserRouter([
             {
                 path:'',
                 element: <ProtectedRoute><HomePage/></ProtectedRoute>
+            },
+            {
+                path:'myitems',
+                element: <ProtectedRoute><MyItemsPage/></ProtectedRoute>
             }
         ]
     }

@@ -5,7 +5,7 @@ import { Authcontext } from "../../AuthLayout/AuthLayout";
 
 const SingleHomepagePost = ({ post,handlelikebutton,handleunlikebutton }) => {
   const { user } = useContext(Authcontext);
-  const like = (post?.likes)?.find((spost) => spost = user.email);
+  const like = (post?.likes)?.find((spost) => spost == user.email);
 
   return (
     <div className="grid md:grid-cols-2 gap-5 grid-cols-1 rounded-md shadow-md bg-white p-5 mb-5 font-Inter">
@@ -19,8 +19,9 @@ const SingleHomepagePost = ({ post,handlelikebutton,handleunlikebutton }) => {
               {post?.likes && <span className="text-xs">({post?.likes?.length})</span>}
             </button>
           ) : (
-            <button onClick={() => handlelikebutton(post._id)}>
+            <button className="flex items-center justify-center" onClick={() => handlelikebutton(post._id)}>
               <AiOutlineLike className="text-2xl" />
+              {post?.likes && <span className="text-xs">({post?.likes?.length})</span>}
             </button>
           )}
 
