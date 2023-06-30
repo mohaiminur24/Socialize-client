@@ -33,15 +33,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) => isActive && "text-yellow-500"}
-          to="/home/profile"
-        >
-          <button>Profile</button>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          className={({ isActive }) => isActive && "text-yellow-500"}
-          to="/home/cart"
+          to="/cart"
         >
           <button>Cart</button>
         </NavLink>

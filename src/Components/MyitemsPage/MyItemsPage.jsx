@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ContainerLayout from "../ReuseableComponents/ContanerLayout";
 import { Authcontext } from "../AuthLayout/AuthLayout";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,8 @@ import SingleProduct from "../ReuseableComponents/SingleProduct";
 const MyItemsPage = () => {
   const { user, loading } = useContext(Authcontext);
   const { register, handleSubmit, reset } = useForm();
-  const [product, refetch] = UserProduct(user?.email)
+  const [product, refetch] = UserProduct(user?.email);
+  const [loadingFn, setLoadingFn] = useState(false);
 
   if(loading){
     return;
@@ -17,6 +18,7 @@ const MyItemsPage = () => {
 
   const handlecreateitems = (data) => {
     const items = { ...data, user: user.email };
+    setLoadingFn(true);
     fetch("http://localhost:5000/newitemscreate", {
       method: "POST",
       headers: {
@@ -36,6 +38,7 @@ const MyItemsPage = () => {
           });
           reset();
           refetch();
+          setLoadingFn(false);
         }
       });
   };
@@ -91,7 +94,8 @@ const MyItemsPage = () => {
             placeholder="Product Description"
           ></textarea>
           <input
-            className="outline-none bg-slate-600 py-2 text-white font-Inter tracking-tighter rounded-md"
+            disabled={loadingFn}
+            className="outline-none bg-slate-600 py-2 text-white font-Inter tracking-tighter rounded-md disabled:opacity-10"
             type="submit"
             value="Create New Items"
           />

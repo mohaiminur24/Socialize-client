@@ -6,6 +6,7 @@ import MainLayout from "../../../MainLayout";
 import ProtectedRoute from "../ReuseableComponents/ProtectedRoute";
 import MyItemsPage from "../MyitemsPage/MyItemsPage";
 import MarketPlace from "../MarketPlacePage/MarketPlace";
+import Cart from "../MycartPage/Cart";
 
 const route = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const route = createBrowserRouter([
                 element: <ProtectedRoute><MarketPlace/></ProtectedRoute>
             }
         ]
+    },
+    {
+        path:'/cart',
+        element: <Cart/>
     }
 ]);
 
