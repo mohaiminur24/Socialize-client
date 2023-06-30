@@ -40,8 +40,6 @@ const MyItemsPage = () => {
       });
   };
 
-  console.log(product);
-
   return (
     <ContainerLayout>
       <div className="p-10 bg-base-200 rounded-md">

@@ -5,6 +5,7 @@ import HomePage from "../HomePage/HomePage";
 import MainLayout from "../../../MainLayout";
 import ProtectedRoute from "../ReuseableComponents/ProtectedRoute";
 import MyItemsPage from "../MyitemsPage/MyItemsPage";
+import MarketPlace from "../MarketPlacePage/MarketPlace";
 
 const route = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const route = createBrowserRouter([
             {
                 path:'myitems',
                 element: <ProtectedRoute><MyItemsPage/></ProtectedRoute>
+            },
+            {
+                path:'marketplace',
+                element: <ProtectedRoute><MarketPlace/></ProtectedRoute>
             }
         ]
     }
