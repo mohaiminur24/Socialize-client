@@ -10,7 +10,7 @@ const MarketPlace = () => {
     return;
   }
   useEffect(() => {
-    fetch("http://localhost:5000/getallproduct")
+    fetch("https://eidproject.vercel.app/getallproduct")
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);

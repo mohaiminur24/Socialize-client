@@ -19,7 +19,7 @@ const MyItemsPage = () => {
   const handlecreateitems = (data) => {
     const items = { ...data, user: user.email };
     setLoadingFn(true);
-    fetch("http://localhost:5000/newitemscreate", {
+    fetch("https://eidproject.vercel.app/newitemscreate", {
       method: "POST",
       headers: {
         "content-type": "application/json",

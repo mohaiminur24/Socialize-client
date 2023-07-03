@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 const UserProduct = (email) => {
     const {refetch, data: product} = useQuery({
         queryFn: async()=>{
-            const result = await fetch(`http://localhost:5000/getuserproduct?email=${email}`).then(res=> res.json());
+            const result = await fetch(`https://eidproject.vercel.app/getuserproduct?email=${email}`).then(res=> res.json());
             return result;
         }
     });

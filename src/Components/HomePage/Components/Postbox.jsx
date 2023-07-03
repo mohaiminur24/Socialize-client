@@ -20,7 +20,7 @@ const Postbox = () => {
       userPhoto: user.photoURL,
       likes: []
     };
-    fetch("http://localhost:5000/postdatainsert", {
+    fetch("https://eidproject.vercel.app/postdatainsert", {
       method: "POST",
       headers: {
         "content-type": "application/json",
